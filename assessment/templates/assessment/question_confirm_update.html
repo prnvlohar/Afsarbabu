@@ -1,0 +1,27 @@
+
+{% extends "users/base.html" %}
+{% load static %}
+{% block title %}Question update{% endblock title %}
+{% block main %}
+
+<div class="main-form container">
+    <h1>Update here</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        {% comment %} {{form.as_p}} {% endcomment %}
+        <label for="question">Question :-</label>
+        <input type="text", name="question", value="{{question}}" class="form-control"> <br>
+        <button type="submit" class="btn btn-primary auto">Update</button>
+    </form>
+    {% if messages %}
+
+    {% for message in messages %}
+    <div class="alert alert-info">
+        {{ message }}
+    </div>
+    {% endfor %}
+
+    {% endif %}
+</div>
+
+{% endblock main %}

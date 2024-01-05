@@ -1,0 +1,37 @@
+{% extends "users/base.html" %}
+{% load static %}
+{% block title %}Question{% endblock title %}
+{% block main %}
+
+<div class="main-form container">
+  <center>Questions present in <strong>{{assessment.title}}</strong> assesssment<h1 style="font-size: 90px;">{{count}}</h1></center>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        {% comment %} <div class="form-group">
+            <label for="assessment">Assessment :- </label>
+            <select class="form-control" id="assessment" name = "{{form.assessment.name}}">
+              {% for a in form.assessment %}
+              <option value="{{a.id}}">{{a}}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="question">Question :-</label>
+            <input type="text" class="form-control" name="{{form.question.name}}" id="question"
+              placeholder="create question"/>
+          </div> {% endcomment %}
+          <input type="submit" value = "Add Question" class="btn btn-primary">
+    </form>
+    {% if messages %}
+
+    {% for message in messages %}
+    <div class="alert alert-info">
+        {{ message }}
+    </div>
+    {% endfor %}
+
+    {% endif %}
+</div>
+
+{% endblock main %}
