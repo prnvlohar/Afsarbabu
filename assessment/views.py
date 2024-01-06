@@ -45,13 +45,7 @@ class ShowAssessmentView(View):
     template_name = 'assessment/assessment.html'
 
     def get(self, request, *args, **kwargs):
-        if 'q' in request.GET:
-            q = request.GET['q']
-            assessment = Assessment.objects.filter(title__icontains=q)
-        else:
-            assessment = Assessment.objects.all()
-        assessment = assessment.annotate(
-            avg_rating=Avg('rating__rating', default=0))        
+        assessment = Assessment.objects.all()   
         return render(request, self.template_name, {'assessment': assessment,})
 
 
